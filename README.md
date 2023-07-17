@@ -1,6 +1,6 @@
 # E-commerce back-end
 
-**Free hosting use for deployement**
+**Free hosting use for deployment**
 
 
  ## Technology Used   
