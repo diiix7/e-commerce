@@ -18,7 +18,9 @@
  4. `npm run data:import`
  5. `npm run dev`
 
-**NEXT UPDATE** : Payment modules
+**NEXT UPDATE** : 
+1. New products added by admin detail page
+2. Payment modules
 
 <br />
 
