@@ -15,3 +15,7 @@ router
 router.route('/:id').delete([verifyUser], deleteProductInCart)
 
 module.exports = router
+
+//'/cartProducts', 
+//'/addTocart',
+//'/deleteFromCart',
