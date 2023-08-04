@@ -13,14 +13,14 @@
     *Pour se connecter à son compte (prends en paramètre l'email (email) de l'utilisateur et son mot de passe (password)):
     "/api/user/signup"
 
-    **Le session d'un utilisateur est suivie d'une authorisation via un Bearer token
-
 
 **Pour le panier (réservé aux utilisateurs aynat un compte):
-    *Pour récupérer les produits d'un panier ou en ajouter:
-    "/api/cart/"
-    *Pour récupérer les produits d'un panier ou en ajouter (prends en paramètre l'id du produit):
-    "/api/cart/:id"
+    *Pour récupérer les produits d'un panier (panier d'un utilisateur):
+    "/api/cart/getCartProducts"
+    *Pour ajouter des produits dans un panier (panier d'un utilisateur):
+    "/api/cart/addProductInCart"
+    *Pour supprimer un produit d'un panier (panier d'un utilisateur, prends en paramètre l'id du panier):
+    "/api/cart//:id/deleteProductInCart"
 
 
 **Pour l'admin: (prennent en paramètre l'email (email) et le mot de passe (password))
@@ -64,3 +64,6 @@
 
 ****Tous les endroits où il y a ':id' dans l'endpoint signifie que l'id du produit doit etre présent
 dans son l'url
+****La session d'un utilisateur est suivie d'une authorisation du type Bearer token qui est utilisée pour
+réaliser les actions tels que (principalement pour) ajouter un produit dans le panier, supprimer, afficher la liste des produits du panier...
+

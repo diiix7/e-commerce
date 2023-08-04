@@ -17,7 +17,7 @@ const addProductInCart = async (req, res) => {
   const {productId, count} = req.body
   try {
     const cart = await Cart.findOneAndUpdate(
-      {productId},
+      {productId, userId: req.user._id},
       {productId, count, userId: req.user._id},
       {upsert: true},
     )
@@ -30,6 +30,7 @@ const addProductInCart = async (req, res) => {
 }
 const deleteProductInCart = async (req, res) => {
   try {
+    //Il s'agit de l'id du cart et non du produit
     await Cart.findByIdAndRemove(req.params.id)
     res.status(200).send({status: 'ok'})
   } catch (e) {
