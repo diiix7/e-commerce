@@ -26,12 +26,11 @@ const getProductById = async (req, res) => {
 
 const addCommentToProduct = async (req, res) => {
   const productId = req.params.id;
-  const { userId, commentContent } = req.body;
-  
+
   //Pour l'utilisateur authentifié
-  //const userId = req.user._id;
-  // Supposons que vous avez un middleware qui met à jour req.user avec l'utilisateur actuellement authentifié.
-  
+  const userId = req.user._id;
+  const commentContent = req.body.commentContent;
+ 
   try {
     const product = await Product.findById(productId);
     if (!product) {

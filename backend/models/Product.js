@@ -21,20 +21,13 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  comments: [{ 
-    // C'est tableau de commentaires
-    user: {
-      type: String, // Référence au modèle User
-      required: true,
-    },
-    /*
+  comments: [{
     //Pour ne le permettre qu'à l'utilisateur connecté
     user: {
-      type: mongoose.Schema.Types.ObjectId, // Modifier le type de données en ObjectId
+      type: mongoose.Schema.Types.ObjectId,
       ref: 'User', // Référence au modèle User
       required: true,
     },
-    */
     content: {
       type: String,
       required: true,
