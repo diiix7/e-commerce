@@ -37,8 +37,8 @@ const addCommentToProduct = async (req, res) => {
       return res.status(404).json({ message: "Product not found." });
     }
 
-    if (!commentContent || !userId) {
-      return res.status(400).json({ message: "Le contenu du commentaire et l'utilisateur sont requis." });
+    if (!commentContent) {
+      return res.status(400).json({ message: "Enter a comment to publish." });
     }
 
     // Vérifier que product.comments est initialisé comme un tableau vide
@@ -55,17 +55,56 @@ const addCommentToProduct = async (req, res) => {
     product.comments.push(comment);
     await product.save();
 
-    return res.status(201).json({ message: "Commentaire ajouté avec succès." });
+    return res.status(201).json({ message: "Comment added." });
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: "Erreur lors de l'ajout du commentaire." });
+    res.status(500).json({ message: "Error while adding the comment." });
   }
 };
 
+
+const addNoteToProduct = async (req, res) => {
+  const productId = req.params.id;
+
+  //Pour l'utilisateur authentifié
+  const userId = req.user._id;
+  const noteValue = req.body.noteValue;
+ 
+  try {
+    const product = await Product.findById(productId);
+    if (!product) {
+      return res.status(404).json({ message: "Product not found." });
+    }
+
+    if (!noteValue) {
+      return res.status(400).json({ message: "Add a note to publish." });
+    }
+
+    // Vérifier que product.comments est initialisé comme un tableau vide
+    if (!product.notes) {
+      product.notes = [];
+    }
+
+    const note = {
+      user: userId,
+      value: noteValue,
+      productId: productId,
+    };
+
+    product.notes.push(note);
+    await product.save();
+
+    return res.status(201).json({ message: "Note added." });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error while adding the note." });
+  }
+};
 
 
 module.exports = {
   getProducts,
   getProductById,
   addCommentToProduct,
+  addNoteToProduct,
 };

@@ -19,6 +19,18 @@ const products = [
         createdAt: new Date("2023-08-02"), // Remplacez par la date de création du commentaire
       },
     ],
+    notes: [
+      {
+        user: "ID_UTILISATEUR_1", // Remplacez par l'ID de l'utilisateur qui a écrit ce commentaire
+        value: 3,
+        createdAt: new Date("2023-08-03"), // Remplacez par la date de création du commentaire
+      },
+      {
+        user: "ID_UTILISATEUR_2", // Remplacez par l'ID de l'utilisateur qui a écrit ce commentaire
+        value: 5,
+        createdAt: new Date("2023-08-02"), // Remplacez par la date de création du commentaire
+      },
+    ],
   },
 ];
 
