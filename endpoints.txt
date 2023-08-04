@@ -13,6 +13,8 @@
     *Pour se connecter à son compte (prends en paramètre l'email (email) de l'utilisateur et son mot de passe (password)):
     "/api/user/signup"
 
+    **Le session d'un utilisateur est suivie d'une authorisation via un Bearer token
+
 
 **Pour le panier (réservé aux utilisateurs aynat un compte):
     *Pour récupérer les produits d'un panier ou en ajouter:
@@ -44,3 +46,21 @@
     il conserve sa valeur précédente):
     "/api/product/editProduct"
 
+
+*Pour les commentaires (réservé aux utilisaturs ayant un compte):
+    *Ajouter un commentaire (à un produit):
+    /api/product/:id/addComment
+    *Récupérer tous les commentaires d'un produit (par rapport à son id):
+    /api/product/:id/getProductcomments
+
+
+*Pour les notes (réservé aux utilisaturs ayant un compte):
+    *Ajouter une note (à un produit):
+    /api/product/:id/addNote
+    *Récupérer toutes les notes d'un produit (par rapport à son id):
+    /api/product/:id/getProductNotes
+
+
+
+****Tous les endroits où il y a ':id' dans l'endpoint signifie que l'id du produit doit etre présent
+dans son l'url

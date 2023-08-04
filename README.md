@@ -41,7 +41,6 @@
  5. `npm run dev`
 
 **NEXT UPDATE** :
-Add note to product 
 Payment modules
 
 <br />

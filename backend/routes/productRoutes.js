@@ -6,14 +6,22 @@ const {
   getProductById,
   addCommentToProduct,
   addNoteToProduct,
+  getProductComments,
+  getProductNotes,
 } = require("../controller/productControllers");
 
 
 router.get("/", getProducts);
 router.get("/:id", getProductById);
+
+//Comment routes
+router.get("/:id/getProductcomments", getProductComments);
 //Pour ne le permettre qu'à l'utilisateur connecté
-router.post("/:id/comment", [verifyUser], addCommentToProduct);
+router.post("/:id/addComment", [verifyUser], addCommentToProduct);
+
+//Note routes
+router.get("/:id/getProductNotes", getProductNotes);
 //Pour ne le permettre qu'à l'utilisateur connecté
-router.post("/:id/note", [verifyUser], addNoteToProduct);
+router.post("/:id/addNote", [verifyUser], addNoteToProduct);
 
 module.exports = router;

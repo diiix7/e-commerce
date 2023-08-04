@@ -1,6 +1,5 @@
 const Product = require("../models/Product");
-
-//const Comment = require("../models/Comment");
+const { ObjectId } = require('mongoose');
 
 const getProducts = async (req, res) => {
   try {
@@ -62,6 +61,26 @@ const addCommentToProduct = async (req, res) => {
   }
 };
 
+const getProductComments = async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+      const product = await Product.findById(productId)
+      .populate('comments.User', 'fullName');
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found.' });
+    }
+
+    // Liste des commentaires associés au produit
+    const comments = product.comments;
+
+    return res.status(200).json({ comments });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error while retrieving comments." });
+  }
+};
 
 const addNoteToProduct = async (req, res) => {
   const productId = req.params.id;
@@ -101,10 +120,33 @@ const addNoteToProduct = async (req, res) => {
   }
 };
 
+const getProductNotes = async (req, res) => {
+  const productId = req.params.id;
+
+  try {
+      const product = await Product.findById(productId)
+      .populate('notes.User', 'fullName'); // Remplacez 'username' par le champ que vous voulez afficher de l'utilisateur
+
+    if (!product) {
+      return res.status(404).json({ message: 'Product not found.' });
+    }
+
+    // Liste des notes associées au produit
+    const notes = product.notes;
+
+    return res.status(200).json({ notes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error while retrieving notes." });
+  }
+};
+
 
 module.exports = {
   getProducts,
   getProductById,
   addCommentToProduct,
   addNoteToProduct,
+  getProductComments,
+  getProductNotes,
 };
