@@ -3,7 +3,7 @@
     "/api/products"
 
     *Pour récupérer un produit spécifique par son id (prend l'id du produit en paramètre):
-    "/api/products/:id"
+    "/api/products/:id/getProductById"
 
 
 

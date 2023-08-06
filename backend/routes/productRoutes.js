@@ -12,7 +12,7 @@ const {
 
 
 router.get("/", getProducts);
-router.get("/:id", getProductById);
+router.get("/:id/getProductById", getProductById);
 
 //Comment routes
 router.get("/:id/getProductcomments", getProductComments);

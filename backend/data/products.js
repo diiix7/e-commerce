@@ -16,4 +16,15 @@ const products = [
   },
 ];
 
+
+const category = [
+  {
+    user: {
+      
+    },
+    categoryName: "Divers",
+    categoryDescription: "Tout",
+  },
+];
+
 module.exports = products;

@@ -25,6 +25,11 @@ Product:
     //Le newPrice n'est pas éditable par l'Admin,
     //si le produit est en promotion et que le discount est entré, le newPrice est automatiquement calculé
 
+Category:
+    ProductId: model Produit //informations du produit
+    categorieName: String //nom de la categorie
+    categorieDescription: String //description de la categorie
+
 Cart:
     userId: model User //informations de l'utilisateur qui a le panier
     productId: model User //informations du (des) pruduit(s) dans le panier

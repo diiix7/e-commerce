@@ -1,6 +1,7 @@
 const express = require('express')
 //const multer = require('multer');
 const Product = require('../model/Product');
+const Category = require("../../models/Category")
 //POUR ENREGISTRER UNE IMAGE
 /*
 // Configuration de multer pour gérer les téléchargements d'images
@@ -118,9 +119,6 @@ const addPromotion = async (req, res) => {
     product.promotion.push(promo);
     const a = await product.save();
 
-    
-    if(a){ console.log("Sauvegardé:", a) }
-
     res.status(200).json({ message: 'Promotion status modified successfully' });
   } catch (error) {
     console.error('Error editing product:', error);
@@ -128,9 +126,47 @@ const addPromotion = async (req, res) => {
   }
 };
 
-/*
-const addPromotion = async (req, res) => {
 
+const getCategories = async (req, res) => {
+  
+  try {
+    const categories = await Category.find({});
+    res.json(categories);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'An error occurred while retrieving the categories' });
+  }
+};
+
+
+const addCategoryToProduct = async (req, res) => {
+  const id = req.params.id;
+  const { categoryName, categoryDescription } = req.body;
+
+  try {
+
+    const product = await Product.findOne({ id });
+
+    const cat = {
+      productId: id,
+      categoryName: categoryName,
+      categoryDescription: categoryDescription,
+    }
+
+    if (categoryName && categoryDescription) {
+      await Category.create(cat);
+    }
+
+    res.status(200).json({ message: 'Product\'s category edited successfully' });
+  } catch (error) {
+    console.error('Error editing product:', error);
+    res.status(500).json({ error: 'An error occurred while editing the category of the product' });
+  }
+};
+
+
+
+const getProductsOfCategory = async (req, res) => {
   const productId = req.params.id;
   const { newPromoValue, newDiscount } = req.body;
 
@@ -141,25 +177,34 @@ const addPromotion = async (req, res) => {
       return res.status(404).json({ error: `Product not found` });
     }
 
-    const priceAfterPromo = ( product.price - (( product.price * newDiscount ) / 100) );
-    
+    if (!product.promotion) {
+      product.promotion = [];
+    }
+
+    const priceAfterPromo = product.price - (product.price * (newDiscount / 100));
+
     const promo = {
       promoValue: newPromoValue,
       discount: newDiscount,
       newPrice: priceAfterPromo,
     };
 
-    console.log(promo);
+    product.promotion.push(promo);
+    const a = await product.save();
 
-    product.promotion.push();
-    await product.save();  
-
-    res.status(200).json({ message: 'État de promotion modifié avec succès'});
+    res.status(200).json({ message: 'Promotion status modified successfully' });
   } catch (error) {
     console.error('Error editing product:', error);
-    res.status(500).json({ error: 'Une erreur s\'est produite lors de la modification du produit' });
-  } 
-}
-*/
+    res.status(500).json({ error: 'An error occurred while modifying the product' });
+  }
+};
 
-module.exports = {addProduct, deleteProduct, editProduct, addPromotion};
+
+
+
+
+
+
+
+
+module.exports = {addProduct, deleteProduct, editProduct, addPromotion, getCategories, addCategoryToProduct, getProductsOfCategory};
