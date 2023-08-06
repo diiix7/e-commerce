@@ -8,35 +8,10 @@ const products = [
     price: 499,
     countInStock: 15,
     comments: [
-      {
-        user: "ID_UTILISATEUR_1",
-        content: "Super produit, je l'adore !",
-        createdAt: new Date("2023-08-03"),
-      },
-      {
-        user: "ID_UTILISATEUR_2",
-        content: "Excellent rapport qualité-prix.",
-        createdAt: new Date("2023-08-02"),
-      },
     ],
     notes: [
-      {
-        user: "ID_UTILISATEUR_1",
-        value: 3,
-        createdAt: new Date("2023-08-03"),
-      },
-      {
-        user: "ID_UTILISATEUR_2",
-        value: 5,
-        createdAt: new Date("2023-08-02"),
-      },
     ],
     promotion: [
-      {
-        promoValue: false,
-        discount: 10,
-        newPrice: 449.1,
-      }
     ],
   },
 ];

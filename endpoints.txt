@@ -6,12 +6,14 @@
     "/api/products/:id"
 
 
+
 **Pour l'utilisateur:
     *Pour créer un compte (prends trois paramètres, le nom de l'utilisateur (name), son email (email) et son mot de passe (password)): 
     "/api/user/signup"
 
     *Pour se connecter à son compte (prends en paramètre l'email (email) de l'utilisateur et son mot de passe (password)):
     "/api/user/signup"
+
 
 
 **Pour le panier (réservé aux utilisateurs aynat un compte):
@@ -23,6 +25,7 @@
     "/api/cart//:id/deleteProductInCart"
 
 
+
 **Pour l'admin: (prennent en paramètre l'email (email) et le mot de passe (password))
     *Pour créer un compte:
     "/api/admin/signupAdmin"
@@ -31,20 +34,25 @@
     "/api/admin/signipAdmin"
 
 
+
 **Pour les actions de l'admin:
     *Ajouter un produit (prends en paramètre le nom (name), l'url de l'image associée (imageUrl),
     sa description (description), son prix (price) et la quantité en stock (countInStock)):
     "/api/product/addProduct"
 
-    *Ajouter un produit (prends en paramètre le nom (name) du produit):
+    *Supprimer un produit (prends en paramètre le nom (name) du produit):
     "/api/product/deleteProduct"
 
-    *Ajouter un produit (prends en paramètre le nom (name) du produit, si le produit est trouvé ses
+    *Editer un produit (prends en paramètre le nom (name) du produit, si le produit est trouvé ses
     informations son affichées et losqu'elles sont modifiées, les nouveaux paramètres sont
     newName pour le nom, newImageUrl pour l'image, newDescription pour la description, newPrice
     pour le prix et newCountInStock pour la quantité en stock. Si un de ces paramètre n'est pas modifié,
     il conserve sa valeur précédente):
     "/api/product/editProduct"
+
+    *Editer l'état de promotion d'un produit (prends en paramètre l'étet (promoValue qui est un booléen,
+    et le pourcentage de réduction), puis retourne le nouveau prix àpres calcul dans la variable newPrice)
+    "/api/product/:id/editPromotion"
 
 
 *Pour les commentaires (réservé aux utilisaturs ayant un compte):
@@ -54,11 +62,13 @@
     /api/product/:id/getProductcomments
 
 
+
 *Pour les notes (réservé aux utilisaturs ayant un compte):
     *Ajouter une note (à un produit):
     /api/product/:id/addNote
     *Récupérer toutes les notes d'un produit (par rapport à son id):
     /api/product/:id/getProductNotes
+
 
 
 

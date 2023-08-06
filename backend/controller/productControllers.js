@@ -99,7 +99,7 @@ const addNoteToProduct = async (req, res) => {
       return res.status(400).json({ message: "Add a note to publish." });
     }
 
-    // Vérifier que product.comments est initialisé comme un tableau vide
+    // Vérifier que product.notes est initialisé comme un tableau vide
     if (!product.notes) {
       product.notes = [];
     }
