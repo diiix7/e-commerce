@@ -1,0 +1,43 @@
+Product:
+    name: String //Nom du product
+    description: String //Description du product
+    price: Number //Prix du product
+    countInStock: Numbre //Quantité en stock
+    imageUrl: lien de l'image associée au produit
+    comments: [
+        user: model User //informations de l'utilisateur qui a commenté
+        content: String //Valeur du commentaire
+        createdAt: Date //Date de création du commentaire
+    ]
+    //Commentaires sur le produit qui est un tableau
+    notes[
+        user: model User //informations de l'utilisateur qui a commenté
+        value: Number //Valeur dde la note
+        createdAt: Date //Date de création de la note
+    ]
+    //Notes sur le produit
+    promotion[
+        promoValue: Number //valeur booléene de l'état de Promotion, 0 pour oui et 1 pour non (ou true / false)
+        discount: Number //Pourcentage de réduction
+        newPrice: Number //nouveau prix après réduction
+    ]
+    //Etat de promotion du produit
+    //Le newPrice n'est pas éditable par l'Admin,
+    //si le produit est en promotion et que le discount est entré, le newPrice est automatiquement calculé
+
+Cart:
+    userId: model User //informations de l'utilisateur qui a le panier
+    productId: model User //informations du (des) pruduit(s) dans le panier
+    count: Number //nombre de produits dans le panier
+
+
+User:
+    email: String //email de l'utilisateur
+    password: String //mot de passe de l'utilisateur
+    fullName: nom de l'utilisateur
+
+
+Admin:
+    email: String //email de l'admin
+    password: String //mot de passe de l'admin
+
