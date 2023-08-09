@@ -148,7 +148,7 @@ const addCategoryToProduct = async (req, res) => {
     const product = await Product.findOne({ id });
 
     const cat = {
-      productId: id,
+      productId: req.params.id,
       categoryName: categoryName,
       categoryDescription: categoryDescription,
     }
@@ -165,42 +165,32 @@ const addCategoryToProduct = async (req, res) => {
 };
 
 
-
 const getProductsOfCategory = async (req, res) => {
-  const productId = req.params.id;
-  const { newPromoValue, newDiscount } = req.body;
-
   try {
-    const product = await Product.findById(productId);
+    const categoryName = req.body.categoryName;
 
-    if (!product) {
-      return res.status(404).json({ error: `Product not found` });
+    const categories = await Category.find({ categoryName });
+
+    if (categories.length === 0) {
+      return res.status(404).json({ error: `No categories found with categoryName: ${categoryName}` });
     }
 
-    if (!product.promotion) {
-      product.promotion = [];
+    
+    const categoryIds = categories.map(category => category.productId);
+
+    const productsInCategory = await Product.find({ _id: { $in: categoryIds } });
+
+    if (productsInCategory.length === 0) {
+      return res.status(404).json({ error: `No products found in the ${categoryName} category` });
     }
 
-    const priceAfterPromo = product.price - (product.price * (newDiscount / 100));
-
-    const promo = {
-      promoValue: newPromoValue,
-      discount: newDiscount,
-      newPrice: priceAfterPromo,
-    };
-
-    product.promotion.push(promo);
-    const a = await product.save();
-
-    res.status(200).json({ message: 'Promotion status modified successfully' });
+    res.status(200).json(productsInCategory);
+    
   } catch (error) {
-    console.error('Error editing product:', error);
-    res.status(500).json({ error: 'An error occurred while modifying the product' });
+    console.error('Error retrieving products:', error);
+    res.status(500).json({ error: 'An error occurred while retrieving products' });
   }
 };
-
-
-
 
 
 

@@ -16,11 +16,9 @@ router.post("/deleteProduct", [verifyAdmin], deleteProduct)
 router.post("/:id/editProduct", [verifyAdmin], editProduct)
 router.post("/:id/addPromotion", [verifyAdmin], addPromotion)
 
-
 router.get("/getCategories", getCategories)
 router.post("/:id/addCategoryToProduct", addCategoryToProduct)
-router.get("/:id/getProductsOfCategory", getProductsOfCategory)
-
+router.get("/getProductsOfCategory", getProductsOfCategory)
 
 
 module.exports = router

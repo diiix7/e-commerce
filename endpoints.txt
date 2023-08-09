@@ -26,6 +26,16 @@
 
 
 
+**Pour les categories:
+    *Pour afficher toutes les categories:
+    "/api/product/getCategories"
+    *Pour ajouter une categorie à un produit (prend en paramètre le nom de la catégorie):
+    "/api/product/:id/addCategoryToProduct"
+    *Pour retourner tous les produits d'une categorie:
+    "/api/getProductsOfCategory"
+
+
+
 **Pour l'admin: (prennent en paramètre l'email (email) et le mot de passe (password))
     *Pour créer un compte:
     "/api/admin/signupAdmin"

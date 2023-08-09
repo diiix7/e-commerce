@@ -8,7 +8,7 @@
  - Display products
  - Display products details, name, description, images, price & quantity in stock
  - Add product to card (for verified users)
- - Make paiement (for verified users)
+ - Make payment (for verified users)
  - Add comments and notes to products (for verified users)
 
  For the admin:
@@ -35,10 +35,12 @@
  ## Step to Start Project
  
  1. `git clone https://github.com/LoickAdjiwanou/e-commerce.git`
- 2. `cd e-comerce-backend`
+ 2. `cd e-commerce-backend`
  3. `npm i`
  4. `npm run data:import`
  5. `npm run dev`
+
+ Before running 4, check /backend/models/Product.js, an important note is added. 
 
 **NEXT UPDATE** :
 Payment modules
