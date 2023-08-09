@@ -42,6 +42,9 @@
 
  Before running 4, check /backend/models/Product.js, an important note is added. 
 
+ ##
+ 1. In the file endpoints.txt: endpoints of the project
+ 2. In classes.txt, classes of the models used
 **NEXT UPDATE** :
 Payment modules
 
